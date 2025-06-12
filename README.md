@@ -24,40 +24,89 @@ A full-stack application where users can register/login, upload books, and manag
 
 ---
 
-🔐 API Endpoints
-🔸 Auth Routes (/api/auth)
-Method	Endpoint	Description
-POST	/register	Register a new user
-POST	/login	Login user and return token cookie
+## 📁 Project Structure
 
-📝 Example Request Body:
+```
+
+book-app/
+├── backend/
+│   ├── controllers/
+│   ├── middleware/
+│   ├── models/
+│   ├── routes/
+│   └── server.js
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── services/
+│   │   ├── App.jsx
+│   │   └── main.jsx
+
+```
+
+---
+
+## ⚙️ Backend Setup
+
+### 1. Environment Variables
+
+Create a `.env` file in `/backend`:
+
+```
+
+## 🔐 API Endpoints
+
+### 🔸 Auth Routes (`/api/auth`)
+
+| Method | Endpoint    | Description                        |
+| ------ | ----------- | ---------------------------------- |
+| POST   | `/register` | Register a new user                |
+| POST   | `/login`    | Login user and return token cookie |
+
+**📝 Example Request Body:**
+
+```json
 {
   "username": "dipendu",
   "email": "dipendu@example.com",
   "password": "secret123"
 }
----
-📘 Book Routes (/api/books)
-🔐 All routes below require authentication via cookie (token)
+```
 
-Method	Endpoint	Description
-GET	/	Get all books
-POST	/	Add a new book
-PUT	/:id	Update a book (by uploader only)
-DELETE	/:id	Delete a book (by uploader only)
 ---
-📝 Example Book Payload:
+
+### 📘 Book Routes (`/api/books`)
+
+> 🔐 All routes below require authentication via cookie (`token`)
+
+| Method | Endpoint | Description                      |
+| ------ | -------- | -------------------------------- |
+| GET    | `/`      | Get all books                    |
+| POST   | `/`      | Add a new book                   |
+| PUT    | `/:id`   | Update a book (by uploader only) |
+| DELETE | `/:id`   | Delete a book (by uploader only) |
+
+**📝 Example Book Payload:**
+
+```json
 {
   "title": "Rich Dad Poor Dad",
   "author": "Robert Kiyosaki"
 }
----
-🧑‍💻 User Workflow
-✅ Register/Login
+```
 
-🏠 Access /home to view & manage books
-📘 Upload a book using the form
-✏️ Update or 🗑️ delete your own books
-🔒 Protected routes ensure only logged-in users can access
+---
+
+## 🧑‍💻 User Workflow
+
+1. ✅ **Register/Login**
+2. 🏠 Access `/home` to view & manage books
+3. 📘 Upload a book using the form
+4. ✏️ Update or 🗑️ delete your own books
+5. 🔒 Protected routes ensure only logged-in users can access
+
+---
+
 
 
