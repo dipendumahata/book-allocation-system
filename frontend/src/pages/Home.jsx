@@ -76,59 +76,66 @@ function Home() {
   };
 
   return (
-    <div className="p-6 bg-gray-100 min-h-screen">
-      <Header username={username} />
+    <div className="p-6 min-h-screen bg-gradient-to-br from-blue-100 via-white to-purple-100">
+  <Header username={username} />
 
-      {/* Upload Form */}
-      <form onSubmit={handleSubmit} className="max-w-md mx-auto mb-8 bg-white p-6 rounded shadow">
-        <h2 className="text-xl font-semibold mb-4">Upload a New Book</h2>
-        <input
-          type="text"
-          name="title"
-          placeholder="Book Title"
-          value={form.title}
-          onChange={handleInputChange}
-          className="w-full p-2 border rounded mb-4"
-          required
-        />
-        <input
-          type="text"
-          name="author"
-          placeholder="Author Name"
-          value={form.author}
-          onChange={handleInputChange}
-          className="w-full p-2 border rounded mb-4"
-          required
-        />
-        <button type="submit" className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
-          Upload
-        </button>
-      </form>
+  {/* Upload Form */}
+  <form
+    onSubmit={handleSubmit}
+    className="max-w-md mx-auto mb-10 bg-white border border-gray-200 p-6 rounded-2xl shadow-lg"
+  >
+    <h2 className="text-2xl font-bold mb-4 text-blue-700">Upload a New Book</h2>
+    <input
+      type="text"
+      name="title"
+      placeholder="📘 Book Title"
+      value={form.title}
+      onChange={handleInputChange}
+      className="w-full p-3 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300"
+      required
+    />
+    <input
+      type="text"
+      name="author"
+      placeholder="✍️ Author Name"
+      value={form.author}
+      onChange={handleInputChange}
+      className="w-full p-3 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-300"
+      required
+    />
+    <button
+      type="submit"
+      className="w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white p-2 rounded-lg hover:opacity-90 transition"
+    >
+      Upload Book
+    </button>
+  </form>
 
-      {/* Book List or Loader */}
-      {loading ? (
-        <div className="flex justify-center mt-12">
-          <ClipLoader color="#3b82f6" size={50} />
-        </div>
-      ) : (
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {books.map((book) => (
-            <BookCard key={book._id} book={book} onEdit={openEditModal} onDelete={deleteBook} />
-          ))}
-        </div>
-      )}
-
-      {/* Edit Modal */}
-      {editBook && (
-        <EditModal
-          book={editBook}
-          form={editForm}
-          onChange={handleEditChange}
-          onCancel={() => setEditBook(null)}
-          onSubmit={handleEditSubmit}
-        />
-      )}
+  {/* Book List or Loader */}
+  {loading ? (
+    <div className="flex justify-center mt-12">
+      <ClipLoader color="#3b82f6" size={50} />
     </div>
+  ) : (
+    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {books.map((book) => (
+        <BookCard key={book._id} book={book} onEdit={openEditModal} onDelete={deleteBook} />
+      ))}
+    </div>
+  )}
+
+  {/* Edit Modal */}
+  {editBook && (
+    <EditModal
+      book={editBook}
+      form={editForm}
+      onChange={handleEditChange}
+      onCancel={() => setEditBook(null)}
+      onSubmit={handleEditSubmit}
+    />
+  )}
+</div>
+
   );
 }
 
